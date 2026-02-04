@@ -1,6 +1,6 @@
 # Default values for kagent-ollama.
 
-ollamaModel: &ollamaModel "qwen2.5:7b"
+ollamaModel: &ollamaModel "qwen2.5-coder:7b"
 
 # Kagent values
 kagent:
@@ -29,13 +29,23 @@ kagent:
     default: "ollama"
     ollama:
       config:
-        host: "http://kagent-ollama.kagent.svc.cluster.local:11434"
+        # Endpoint for the Ollama API used by Kagent.
+        # Default here is set to reach a local Ollama instance running on the macOS host
+        # from within Docker / kind using the special DNS name provided by Docker Desktop:
+        #   http://host.docker.internal:11434
+        #
+        # Change this value to the appropriate address that Kagent (running in-cluster)
+        # can reach to talk to your local Ollama server.
+        # host: "http://kagent-ollama.kagent.svc.cluster.local:11434"
+        host: "http://host.docker.internal:11434"
         options:
           num_ctx: "16384"
       model: *ollamaModel
 
 # Ollama values
 ollama:
+  # By default, the Ollama Helm chart will deploy an Ollama server in the cluster. Since in this setup we want to use a local Ollama instance running on the macOS host, we disable the in-cluster deployment of Ollama.
+  enabled: false
   ollama:
     models:
       pull:

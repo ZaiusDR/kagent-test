@@ -11,3 +11,4 @@ dependencies:
   - name: ollama
     version: 1.41.0
     repository: https://helm.otwld.com/
+    condition: ollama.enabled

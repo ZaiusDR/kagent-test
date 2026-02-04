@@ -15,6 +15,16 @@ kind create cluster --config kind-config.yaml
 kind delete cluster --name kagent-cluster
 ```
 
+## Configuration
+
+### Ollama Model
+
+The default model is set to `qwen2.5-coder:7b` in `helm/kagent-ollama/values.yaml`. You can change this by updating the `ollamaModel` value.
+
+```yaml
+ollamaModel: &ollamaModel "llama3.2"
+```
+
 ## Kagent Setup
 
 ### Install Kagent CRDs

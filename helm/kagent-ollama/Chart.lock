@@ -1,0 +1,9 @@
+dependencies:
+- name: kagent
+  repository: oci://ghcr.io/kagent-dev/kagent/helm
+  version: 0.7.13
+- name: ollama
+  repository: https://helm.otwld.com/
+  version: 1.41.0
+digest: sha256:d7374334477ebb72ddeae9a2b916fcd11dd5f8cd61f435c7495c83d43f11a6ac
+generated: "2026-02-04T13:55:10.008526+01:00"

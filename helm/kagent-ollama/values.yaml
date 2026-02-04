@@ -1,0 +1,44 @@
+# Default values for kagent-ollama.
+
+ollamaModel: &ollamaModel "qwen2.5:7b"
+
+# Kagent values
+kagent:
+  agents:
+    argo-rollouts-agent:
+      enabled: false
+    cilium-debug-agent:
+      enabled: false
+    cilium-manager-agent:
+      enabled: false
+    cilium-policy-agent:
+      enabled: false
+    kgateway-agent:
+      enabled: false
+    observability-agent:
+      enabled: false
+    promql-agent:
+      enabled: false
+  tools:
+    grafana-mcp:
+      enabled: false
+    querydoc:
+      enabled: false
+
+  providers:
+    default: "ollama"
+    ollama:
+      config:
+        host: "http://kagent-ollama.kagent.svc.cluster.local:11434"
+        options:
+          num_ctx: "16384"
+      model: *ollamaModel
+
+# Ollama values
+ollama:
+  ollama:
+    models:
+      pull:
+        - *ollamaModel
+      run:
+        - *ollamaModel

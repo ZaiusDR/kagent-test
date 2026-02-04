@@ -20,13 +20,17 @@ kind delete cluster --name kagent-cluster
 ### Install Kagent CRDs
 
 ```bash
-helm install kagent-crds oci://ghcr.io/kagent-dev/kagent/helm/kagent-crds \
-    --namespace kagent \
-    --create-namespace
+helm install kagent-crds oci://ghcr.io/kagent-dev/kagent/helm/kagent-crds
 ```
 
 ### Install Kagent Helm Chart
 
 ```bash
-helm install kagent helm/kagent-ollama --namespace kagent
+helm install kagent helm/kagent-ollama --namespace kagent --create-namespace
+```
+
+### Uninstall Kagent
+
+```bash
+helm uninstall kagent --namespace kagent
 ```
